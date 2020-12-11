@@ -6,6 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.santalu.emptyview.EmptyView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:ev_empty_drawable="@drawable/ic_empty_foreground"
+        app:ev_empty_drawableTint="@color/colorPrimary"
+        app:ev_empty_text="@string/empty"
+        app:ev_empty_title="@string/error_endpoint_title"
+        app:ev_gravity="center"
+        app:ev_transition="auto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
     <ListView
         android:id="@+id/call_listview"
         android:layout_width="0dp"
@@ -14,4 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    </com.santalu.emptyview.EmptyView>
 </androidx.constraintlayout.widget.ConstraintLayout>

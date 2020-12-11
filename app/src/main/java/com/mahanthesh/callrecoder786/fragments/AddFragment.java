@@ -32,8 +32,8 @@ public class AddFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add, container, false);
 
-//        emptyView = (EmptyView) view.findViewById(R.id.empty_view);
-//        emptyView.empty().show();
+        emptyView = (EmptyView) view.findViewById(R.id.empty_view);
+
         
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_tasks);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -61,6 +61,9 @@ public class AddFragment extends Fragment {
             protected void onPostExecute(List<Task> tasks) {
                 super.onPostExecute(tasks);
                 TasksAdapter adapter = new TasksAdapter(getContext(), tasks);
+                if(tasks.size() == 0){
+                   emptyView.empty().show();
+                }
                 recyclerView.setAdapter(adapter);
             }
         }

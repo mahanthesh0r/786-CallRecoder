@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import com.mahanthesh.callrecoder786.AddTaskActivity;
 import com.mahanthesh.callrecoder786.R;
 import com.mahanthesh.callrecoder786.model.Report;
+import com.santalu.emptyview.EmptyView;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import com.snatik.storage.Storage;
@@ -32,6 +33,7 @@ public class CallFragment extends Fragment {
 
     private Storage storage;
     private ListView listView;
+    private EmptyView emptyView;
     MediaPlayer mp = new MediaPlayer();
     MaterialDialog materialDialog;
     int id;
@@ -43,6 +45,7 @@ public class CallFragment extends Fragment {
         //init
         storage = new Storage(getContext());
         listView = (ListView) view.findViewById(R.id.call_listview);
+        emptyView = (EmptyView) view.findViewById(R.id.empty_view);
 
         //get external storage
         String path = storage.getExternalStorageDirectory() + "/RecordDirName";
@@ -54,6 +57,10 @@ public class CallFragment extends Fragment {
         Report report = new Report();
         report.setTotalRecords(files.size());
         final ArrayList<String> arrayList = new ArrayList<>();
+
+        if(files.size() == 0){
+            emptyView.empty().show();
+        }
 
         for(int i = 0; i<files.size(); i++){
             String fileNameWithPath = files.get(i).toString();
