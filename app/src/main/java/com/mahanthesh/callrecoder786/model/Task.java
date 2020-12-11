@@ -22,7 +22,7 @@ public class Task implements Serializable {
     private String audioPath;
 
     @ColumnInfo(name = "reminder")
-    private String reminder;
+    private String reminder = "No reminder";
 
 
     /*

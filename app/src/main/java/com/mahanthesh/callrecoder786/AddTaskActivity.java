@@ -29,7 +29,7 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddNotes extends AppCompatActivity implements View.OnClickListener, TimePickerDialog.OnTimeSetListener {
+public class AddTaskActivity extends AppCompatActivity implements View.OnClickListener, TimePickerDialog.OnTimeSetListener {
 
     private EditText et_title, et_desc;
     private Button reminderBtn, saveBtn;

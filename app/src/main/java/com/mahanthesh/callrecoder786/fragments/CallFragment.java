@@ -17,12 +17,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.mahanthesh.callrecoder786.AddNotes;
+import com.mahanthesh.callrecoder786.AddTaskActivity;
 import com.mahanthesh.callrecoder786.R;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import com.snatik.storage.Storage;
-import com.snatik.storage.helpers.OrderType;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -85,7 +84,7 @@ public class CallFragment extends Fragment {
                                 public void onClick(DialogInterface dialogInterface, int which) {
                                 Log.d("TAG", "PATH: "+ dirPath+ "/" + arrayList.get(id));
                                 String recordFilePath = dirPath+ "/" + arrayList.get(id);
-                                Intent addTaskIntent = new Intent(getActivity(), AddNotes.class);
+                                Intent addTaskIntent = new Intent(getActivity(), AddTaskActivity.class);
                                 addTaskIntent.putExtra("recordFilePath",recordFilePath);
                                 startActivity(addTaskIntent);
 
