@@ -269,9 +269,10 @@
     <fragment
         android:id="@+id/fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="409dp"
-        android:layout_height="530dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:defaultNavHost="true"
+
         app:layout_constraintBottom_toTopOf="@+id/smoothBottomBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

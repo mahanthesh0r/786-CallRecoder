@@ -4,13 +4,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="#F1F1F1"
+    >
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ADD"
+
+<!--    <com.santalu.emptyview.EmptyView-->
+<!--        android:id="@+id/empty_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:ev_empty_drawable="@drawable/ic_empty_foreground"-->
+<!--        app:ev_empty_drawableTint="@color/colorPrimary"-->
+<!--        app:ev_empty_text="@string/empty"-->
+<!--        app:ev_empty_title="@string/error_endpoint_title"-->
+<!--        app:ev_gravity="center"-->
+<!--        app:ev_transition="auto"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+
+<!--    </com.santalu.emptyview.EmptyView>-->
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_tasks"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

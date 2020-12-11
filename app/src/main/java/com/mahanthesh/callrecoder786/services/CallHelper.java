@@ -56,6 +56,7 @@ public class CallHelper {
         private boolean isIncoming, wasRinging;
         private String savedNumber, number;  //because the passed incoming is only valid in ringing
         private Context context = null;
+        String No;
 
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -67,6 +68,8 @@ public class CallHelper {
 
                 savedNumber = intent.getExtras().getString("android.intent.extra.PHONE_NUMBER");
                 String info = intent.getExtras().getString("android.intent.extra.NAME");
+                No = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
+                Log.e(TAG,"INCOMING NUMBER: " + No);
                 String name = intent.getExtras().getString("name");
                 callStartTime = new Date();
 
@@ -75,6 +78,7 @@ public class CallHelper {
                         "info: " + info +
                         "name: " + name +
                         "call start time: " + callStartTime);
+
 
 //            String stateStr = intent.getExtras().getString(TelephonyManager.EXTRA_STATE);
 //            checkState(stateStr);
@@ -104,12 +108,18 @@ public class CallHelper {
 
         //Derived classes should override these to respond to specific events of interest
         protected void onIncomingCallStarted(Context ctx, String number, Date start) {
-            Log.e(TAG, "onIncomingCallStarted: ");
+            Log.e(TAG, "onIncomingCallStarted: "+ start);
+            Log.e(TAG,"PHONE NUMBER: "+ No);
+
+
+            //start call recording
+            callRecord.startCallReceiver();
 
         }
 
         protected void onOutgoingCallStarted(Context ctx, String number, Date start) {
             Log.e(TAG, "onOutgoingCallStarted: ");
+            Log.e(TAG,"PHONE NUMBER: "+ number);
 
             //start call recording
             callRecord.startCallReceiver();
@@ -117,6 +127,7 @@ public class CallHelper {
 
         protected void onIncomingCallEnded(Context ctx, String number, Date start, Date end) {
             Log.e(TAG, "onIncomingCallEnded: ");
+            Log.e(TAG,"PHONE NUMBER: "+ number);
             // Stop call recording
             callRecord.stopCallReceiver();
         }

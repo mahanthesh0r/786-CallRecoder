@@ -24,6 +24,7 @@ android {
 
 dependencies {
     def nav_version = "2.3.2"
+    def room_version = "2.2.5"
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.3'
@@ -38,5 +39,18 @@ dependencies {
     //Navigation Architecture Component
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
+    // Material Dialog Library
+    implementation 'com.shreyaspatil:MaterialDialog:2.1'
+
+    // Material Design Library
+    implementation 'com.google.android.material:material:1.0.0'
+
+    //Room Database
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    testImplementation "android.arch.persistence.room:testing:$room_version"
+
+    implementation 'com.github.santalu:emptyview:1.3.6'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
 
 }

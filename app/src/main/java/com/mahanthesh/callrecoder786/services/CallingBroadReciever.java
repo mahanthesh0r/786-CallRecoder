@@ -44,7 +44,7 @@ public class CallingBroadReciever extends BroadcastReceiver {
         } else {
             String stateStr = intent.getExtras().getString(TelephonyManager.EXTRA_STATE);
             number = intent.getExtras().getString(TelephonyManager.EXTRA_INCOMING_NUMBER);
-            Log.e(TAG,""+number);
+            Log.e(TAG,"INCOMING PHONE NUMBER: "+number);
             checkState(stateStr);
         }
     }

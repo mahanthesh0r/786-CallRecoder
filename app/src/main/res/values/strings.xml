@@ -3,4 +3,6 @@
     <string name="call_icon">Call Icon</string>
     <string name="device_admin_label">Device Admin</string>
     <string name="device_description">Disable the Force Stop button using Device Policy Manager API</string>
+    <string name="error_endpoint_title">No task</string>
+    <string name="empty">No tasks to display</string>
 </resources>
