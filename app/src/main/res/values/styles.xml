@@ -15,6 +15,9 @@
         <item name="material_dialog_negative_button_text_color">@color/colorAccent</item>
     </style>
 
-
+    <!-- Splash Screen theme. -->
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
 
 </resources>

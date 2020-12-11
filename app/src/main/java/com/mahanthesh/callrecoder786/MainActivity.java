@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         bottomBar.setupWithNavController(menu, navController);
-        return true;
+        return false;
     }
 
     private void bottombarListener(){

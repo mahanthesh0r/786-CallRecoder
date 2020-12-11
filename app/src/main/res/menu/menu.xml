@@ -8,18 +8,15 @@
 
     <item
         android:id="@+id/add"
-        android:title="Add"
-        android:icon="@drawable/ic_add_white"/>
+        android:title="Tasks"
+        android:iconTint="@color/colorWhite"
+        android:icon="@drawable/ic_notes" />
 
     <item
         android:id="@+id/calls"
         android:title="Calls"
         android:icon="@drawable/ic_call_white"/>
 
-    <item
-        android:id="@+id/settings"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings"/>
 
 
 </menu>

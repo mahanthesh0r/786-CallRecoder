@@ -96,9 +96,9 @@ public class AddTaskActivity extends AppCompatActivity implements View.OnClickLi
             et_desc.requestFocus();
             return;
         }
-        if(sRecordFilePath.isEmpty()){
-            Toast.makeText(getApplicationContext(), "Audio file not found", Toast.LENGTH_LONG).show();
-        }
+//        if(sRecordFilePath.isEmpty()){
+//            Toast.makeText(getApplicationContext(), "Audio file not found", Toast.LENGTH_LONG).show();
+//        }
 
         class SaveTask extends AsyncTask<Void, Void, Void>{
 

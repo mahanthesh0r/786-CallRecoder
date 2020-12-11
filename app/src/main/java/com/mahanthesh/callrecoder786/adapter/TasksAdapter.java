@@ -45,6 +45,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
         holder.textViewReminder.setText(t.getReminder());
         recordFilePath = t.getAudioPath();
 
+
     }
 
     @Override
@@ -64,6 +65,10 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
             textViewDesc = itemView.findViewById(R.id.textViewDesc);
             textViewReminder = itemView.findViewById(R.id.textViewReminder);
             playBtn = itemView.findViewById(R.id.playBtn);
+
+            if(recordFilePath == null){
+                playBtn.setVisibility(View.INVISIBLE);
+            }
 
 
 

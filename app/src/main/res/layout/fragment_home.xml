@@ -84,7 +84,7 @@
                             app:srcCompat="@drawable/ic__record" />
 
                         <TextView
-                            android:id="@+id/textView3"
+                            android:id="@+id/textViewTotalRecords"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
@@ -115,7 +115,7 @@
                             app:srcCompat="@drawable/ic_notes" />
 
                         <TextView
-                            android:id="@+id/textView6"
+                            android:id="@+id/textViewTotalTasks"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
@@ -237,6 +237,7 @@
                    </LinearLayout>
 
                    <Button
+                       android:id="@+id/buttonAddReminder"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:text="Add Reminder"

@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.mahanthesh.callrecoder786.AddTaskActivity;
 import com.mahanthesh.callrecoder786.R;
+import com.mahanthesh.callrecoder786.model.Report;
 import com.shreyaspatil.MaterialDialog.MaterialDialog;
 import com.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import com.snatik.storage.Storage;
@@ -50,6 +51,8 @@ public class CallFragment extends Fragment {
         Log.d("TAG", "PATH1: "+ dirPath);
 
         List<File> files = storage.getFiles(path);
+        Report report = new Report();
+        report.setTotalRecords(files.size());
         final ArrayList<String> arrayList = new ArrayList<>();
 
         for(int i = 0; i<files.size(); i++){
@@ -87,6 +90,7 @@ public class CallFragment extends Fragment {
                                 Intent addTaskIntent = new Intent(getActivity(), AddTaskActivity.class);
                                 addTaskIntent.putExtra("recordFilePath",recordFilePath);
                                 startActivity(addTaskIntent);
+                                dialogInterface.dismiss();
 
 
 
