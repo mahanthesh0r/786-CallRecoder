@@ -10,13 +10,14 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.aykuttasil.callrecord.CallRecord;
+import com.mahanthesh.callrecoder786.model.Report;
 
 import java.util.Date;
 
 public class CallHelper {
 
     private static final String TAG = "CallHelper";
-
+    Report report = new Report();
     /**
      * Call recorder
      */
@@ -50,7 +51,7 @@ public class CallHelper {
      * Broadcast receiver to detect the outgoing calls and phone state.
      */
     public class CallingBroadReciever extends BroadcastReceiver {
-        private static final String TAG = "CallingBroadReciever";
+        private static final String TAG = "CallingBroadRecieverH";
         private int lastState = TelephonyManager.CALL_STATE_IDLE;
         private Date callStartTime;
         private boolean isIncoming, wasRinging;
@@ -128,13 +129,16 @@ public class CallHelper {
         protected void onIncomingCallEnded(Context ctx, String number, Date start, Date end) {
             Log.e(TAG, "onIncomingCallEnded: ");
             Log.e(TAG,"PHONE NUMBER: "+ number);
+            //Change file name
+            callRecord.changeRecordFileName(report.getPhoneNumber());
             // Stop call recording
             callRecord.stopCallReceiver();
         }
 
         protected void onOutgoingCallEnded(Context ctx, String number, Date start, Date end) {
             Log.e(TAG, "onOutgoingCallEnded: ");
-
+            //Change file name
+            callRecord.changeRecordFileName(report.getPhoneNumber());
             // Stop call recording
             callRecord.stopCallReceiver();
         }

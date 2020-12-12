@@ -88,7 +88,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:text="120"
+                            android:text="0"
                             android:textAlignment="center" />
 
                         <TextView
@@ -133,6 +133,7 @@
                     </LinearLayout>
 
                     <Button
+                        android:id="@+id/button_showTask"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/colorPrimary"

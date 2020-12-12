@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import com.mahanthesh.callrecoder786.model.Report;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -45,6 +47,8 @@ public class CallingBroadReciever extends BroadcastReceiver {
             String stateStr = intent.getExtras().getString(TelephonyManager.EXTRA_STATE);
             number = intent.getExtras().getString(TelephonyManager.EXTRA_INCOMING_NUMBER);
             Log.e(TAG,"INCOMING PHONE NUMBER: "+number);
+            Report report = new Report();
+            report.setPhoneNumber(number);
             checkState(stateStr);
         }
     }
@@ -111,6 +115,7 @@ public class CallingBroadReciever extends BroadcastReceiver {
 
                     onOutgoingCallStarted(context, savedNumber, callStartTime);
                     //todo: start recording here
+                    Log.e(TAG,"Should start recording");
                 }
 
                 break;
@@ -129,6 +134,7 @@ public class CallingBroadReciever extends BroadcastReceiver {
 
                     onOutgoingCallEnded(context, savedNumber, callStartTime, new Date());
                     //todo: stop recording here
+                    Log.e(TAG,"Should stop recording");
 
                 }
                 break;

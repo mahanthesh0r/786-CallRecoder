@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.mahanthesh.callrecoder786.AddTaskActivity;
 import com.mahanthesh.callrecoder786.Database.DatabaseClient;
@@ -29,7 +31,7 @@ public class HomeFragment extends Fragment {
 
     private TextView txtViewTotalRecords, txtViewTotalTasks;
     private Storage storage;
-    private Button btnAddReminder;
+    private Button btnAddReminder, btnShowTask;
 
     @Nullable
     @Override
@@ -40,6 +42,7 @@ public class HomeFragment extends Fragment {
         txtViewTotalRecords = (TextView) view.findViewById(R.id.textViewTotalRecords);
         txtViewTotalTasks = (TextView) view.findViewById(R.id.textViewTotalTasks);
         btnAddReminder = (Button) view.findViewById(R.id.buttonAddReminder);
+        btnShowTask = (Button) view.findViewById(R.id.button_showTask);
         storage = new Storage(getContext());
         Report report = new Report();
 
@@ -47,12 +50,23 @@ public class HomeFragment extends Fragment {
         String path = storage.getExternalStorageDirectory() + "/RecordDirName";
         final String dirPath = Environment.getExternalStorageDirectory() + "/RecordDirName";
         List<File> files = storage.getFiles(dirPath);
-        report.setTotalRecords(files.size());
-        Log.e("TAG","COUNT: "+ report.getTotalRecords());
-        txtViewTotalRecords.setText(String.valueOf(report.getTotalRecords()));
+        if(files != null){
+            report.setTotalRecords(files.size());
+            Log.e("TAG","COUNT: "+ report.getTotalRecords());
+            txtViewTotalRecords.setText(String.valueOf(report.getTotalRecords()));
+        }
+
 
         getCount();
 
+
+        btnShowTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new AddFragment();
+                replaceFragment(fragment);
+            }
+        });
 
         btnAddReminder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,4 +105,14 @@ public class HomeFragment extends Fragment {
         GetCount gc = new GetCount();
         gc.execute();
     }
+
+    public void replaceFragment(Fragment fragment){
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+    }
+
 }

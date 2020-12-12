@@ -4,6 +4,7 @@ public class Report {
 
     private int totalRecords;
     private String totalTasks;
+    private String phoneNumber;
 
 
 
@@ -22,4 +23,13 @@ public class Report {
     public void setTotalTasks(String totalTasks) {
         this.totalTasks = totalTasks;
     }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
+

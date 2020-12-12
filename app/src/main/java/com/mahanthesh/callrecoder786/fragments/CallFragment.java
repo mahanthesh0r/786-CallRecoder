@@ -51,77 +51,79 @@ public class CallFragment extends Fragment {
         String path = storage.getExternalStorageDirectory() + "/RecordDirName";
         final String dirPath = Environment.getExternalStorageDirectory() + "/RecordDirName";
 
-        Log.d("TAG", "PATH1: "+ dirPath);
-
         List<File> files = storage.getFiles(path);
-        Report report = new Report();
-        report.setTotalRecords(files.size());
-        final ArrayList<String> arrayList = new ArrayList<>();
+
+        if(files != null) {
+
+
+            Report report = new Report();
+            report.setTotalRecords(files.size());
+            final ArrayList<String> arrayList = new ArrayList<>();
 
         if(files.size() == 0){
             emptyView.empty().show();
         }
 
-        for(int i = 0; i<files.size(); i++){
-            String fileNameWithPath = files.get(i).toString();
-            String[] filename = fileNameWithPath.split("/");
-            arrayList.add(filename[5]);
+            for (int i = 0; i < files.size(); i++) {
+                String fileNameWithPath = files.get(i).toString();
+                String[] filename = fileNameWithPath.split("/");
+                arrayList.add(filename[5]);
 
-        }
-
-
-
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,arrayList);
-
-        listView.setAdapter(arrayAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getContext(), "file: "+ arrayList.get(i).toString(), Toast.LENGTH_LONG).show();
-                try {
-                    mp.reset();
-                    mp.setDataSource(dirPath+ "/" + arrayList.get(i));
-                    mp.prepare();
-                    mp.start();
-                    id = i;
-
-                    materialDialog = new MaterialDialog.Builder(getActivity())
-                            .setTitle("Call Recoder Media Player")
-                            .setCancelable(true)
-                            .setPositiveButton("Add Note", R.drawable.ic_add_note, new MaterialDialog.OnClickListener(){
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int which) {
-                                Log.d("TAG", "PATH: "+ dirPath+ "/" + arrayList.get(id));
-                                String recordFilePath = dirPath+ "/" + arrayList.get(id);
-                                Intent addTaskIntent = new Intent(getActivity(), AddTaskActivity.class);
-                                addTaskIntent.putExtra("recordFilePath",recordFilePath);
-                                startActivity(addTaskIntent);
-                                dialogInterface.dismiss();
-
-
-
-                                }
-                            })
-                            .setNegativeButton("Stop", R.drawable.ic_stop, new MaterialDialog.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int which) {
-                                    mp.stop();
-                                    mp.reset();
-                                    dialogInterface.dismiss();
-
-                                }
-                            }).build();
-
-                    // Show Dialog
-                    materialDialog.show();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
             }
-        });
 
 
+            ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrayList);
+
+            listView.setAdapter(arrayAdapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Toast.makeText(getContext(), "file: " + arrayList.get(i).toString(), Toast.LENGTH_LONG).show();
+                    try {
+                        mp.reset();
+                        mp.setDataSource(dirPath + "/" + arrayList.get(i));
+                        mp.prepare();
+                        mp.start();
+                        id = i;
+
+                        materialDialog = new MaterialDialog.Builder(getActivity())
+                                .setTitle("Call Recoder Media Player")
+                                .setCancelable(true)
+                                .setPositiveButton("Add Note", R.drawable.ic_add_note, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        Log.d("TAG", "PATH: " + dirPath + "/" + arrayList.get(id));
+                                        String recordFilePath = dirPath + "/" + arrayList.get(id);
+                                        Intent addTaskIntent = new Intent(getActivity(), AddTaskActivity.class);
+                                        addTaskIntent.putExtra("recordFilePath", recordFilePath);
+                                        startActivity(addTaskIntent);
+                                        dialogInterface.dismiss();
+
+
+                                    }
+                                })
+                                .setNegativeButton("Stop", R.drawable.ic_stop, new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        mp.stop();
+                                        mp.reset();
+                                        dialogInterface.dismiss();
+
+                                    }
+                                }).build();
+
+                        // Show Dialog
+                        materialDialog.show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+        }else{
+            emptyView.empty().show();
+        }
 
 
         return view;
